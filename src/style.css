@@ -1,0 +1,55 @@
+.hide{
+    display: none;
+}
+
+body{
+    font-family: arial; /*Tipo de texto*/
+    font-size: 25px; /*Tamaño de letra*/
+    background: #F5C108; /*Color de fondo*/
+}
+
+h2{
+    font-weight: bold; /*Texto en Negrita*/
+    font-size: 30px; /*Tamaño de letra*/
+    color: #F5C108; /*Color de letra*/
+}
+
+div{
+    line-height: 50px; /*Interlineado*/
+}
+
+input{
+    width: 500px; /*Ancho*/
+    height: 25px; /*Alto*/
+    font-size: 18px; /*Tamaño de letra*/
+    color: blue; /*Color de letra*/
+}
+
+button{
+    width: 250px; /*Ancho*/
+    height: 35px; /*Alto*/
+    font-size: 18px; /*Tamaño de letra*/
+    color: blue; /*Color de letra*/
+}
+
+.general{
+    width: 70%; /*Ancho*/
+    height: 100%; /*Alto*/
+    /*Con estos atributos centro la pagina*/
+    margin:auto; /*Derecha e izquierda centra*/
+    margin-top: 130px; /*Alto del contenedor*/
+    border-radius: 25px; /*Bordes en las esquinas*/
+    background: #E5E5E5; /*Color de fondo*/
+    text-align: center; /*Aliniacion de alementos*/
+
+}
+
+.sgte{
+    width: 100px; /*Ancho*/
+    height: 25px; /*Alto*/
+    font-size: 13px; /*Tamaño de letra*/
+    color:red; /*Color de letra*/
+    font-weight: bold;
+}
+
+

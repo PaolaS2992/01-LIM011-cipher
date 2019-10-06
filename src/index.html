@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">    
+</head>
+<body>
+    <header>
+        <h1>ERES TÚ</h1>
+    </header>
+    <main>
+        <div class="general">
+            <div id="inicio">
+                <h2>GENERACIÓN DE PALABRA DE SEGURIDAD</h2>
+                <div>
+                    <p>Ingresa tu palabra clave</p>
+                    <input type="text" id="txtEncriptar">
+                </div>
+                <div>
+                    <p>Ingresa el nro de Posiciones</p>
+                    <input type="text" id="txtNroEncriptar">
+                </div>
+                <div>
+                    <button id="btnEncriptar">GENERAR CÓDIGO</button>
+                    <p id="txtRespuesta1"></p>
+                    <button class="sgte" id="btnSgte">SIGUIENTE</button>
+                    
+                </div>                
+            </div>
+        
+            <div class="hide" id="primeraVista">
+                <h2>RECUPERACIÓN DE CONTRASEÑA</h2>
+                <div>
+                <p>Ingresa tu palabra clave</p>
+                <input type="text" id="txtDesencriptar">
+                </div>
+                <div>
+                <p>Ingresa el nro de Posiciones</p>
+                <input type="text" id="txtNroDesencriptar">
+                </div>
+                <div>
+                <button id="btnDesencriptar">VALIDAR PALABRA CLAVE</button>
+                <p id="txtRespuesta2"></p>
+                </div>
+            </div>
+    
+            <!--
+            <div class="hide" id="segundaVista">
+                <h2>FELICIDADES YA PUEDES RESTABLECER TU CONTRASEÑA</h2>
+                <p>Ingresa tu nueva clave</p>
+                <input type="text" id="txtNuevaClave">
+                <button id="btnCorreo">IR AL CORREO</button>
+    
+            </div>
+            -->
+        </div>     
+
+    </main>
+
+    <footer>
+        Dirección - Autor
+    </footer>
+</body>
+<script src="cipher.js"></script>
+<script src="index.js"></script>
+
+</html>
