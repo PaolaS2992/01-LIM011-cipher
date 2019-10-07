@@ -10,19 +10,25 @@
 </head>
 <body>
     <header>
-        <h1>ERES TÚ</h1>
+        <h1>* * * VALIDANDO TU IDENTIDAD * * *</h1>
     </header>
     <main>
         <div class="general">
+            
             <div id="inicio">
-                <h2>GENERACIÓN DE PALABRA DE SEGURIDAD</h2>
+                <h2>GENERA TU PALABRA DE SEGURIDAD</h2>
+                    
+                <figure>
+                    <img src="img/img_01.png" alt="ENCRIPTACION" height="150px" width="230px">
+                </figure>                        
+                
                 <div>
                     <p>Ingresa tu palabra clave</p>
-                    <input type="text" id="txtEncriptar">
+                    <input type="text" id="txtEncriptar" required>
                 </div>
                 <div>
                     <p>Ingresa el nro de Posiciones</p>
-                    <input type="text" id="txtNroEncriptar">
+                    <input type="text" id="txtNroEncriptar" required>
                 </div>
                 <div>
                     <button id="btnEncriptar">GENERAR CÓDIGO</button>
@@ -34,35 +40,45 @@
         
             <div class="hide" id="primeraVista">
                 <h2>RECUPERACIÓN DE CONTRASEÑA</h2>
+
+                <figure>
+                    <img src="img/img_02.png" alt="" height="150px" width="200px">
+                </figure>
+
                 <div>
                 <p>Ingresa tu palabra clave</p>
-                <input type="text" id="txtDesencriptar">
+                <input type="text" id="txtDesencriptar" required>
                 </div>
                 <div>
                 <p>Ingresa el nro de Posiciones</p>
-                <input type="text" id="txtNroDesencriptar">
+                <input type="text" id="txtNroDesencriptar" required>
                 </div>
                 <div>
                 <button id="btnDesencriptar">VALIDAR PALABRA CLAVE</button>
                 <p id="txtRespuesta2"></p>
+                <button class="sgte" id="btnFin">FINALIZAR</button>
                 </div>
             </div>
     
-            <!--
             <div class="hide" id="segundaVista">
                 <h2>FELICIDADES YA PUEDES RESTABLECER TU CONTRASEÑA</h2>
+                <figure>
+                    <img src="img/img_03.png" alt="" height="200 px" width="200 px">
+                </figure>
+                <a href="index.html">VOLVER</a>
+                <!--
                 <p>Ingresa tu nueva clave</p>
                 <input type="text" id="txtNuevaClave">
-                <button id="btnCorreo">IR AL CORREO</button>
-    
+                <button id="btnCorreo">IR AL CORREO</button> -->
+
             </div>
-            -->
+            
         </div>     
 
     </main>
 
     <footer>
-        Dirección - Autor
+       <p class="pie">Laboratoria 2019 | LIM011-cipher</p>
     </footer>
 </body>
 <script src="cipher.js"></script>

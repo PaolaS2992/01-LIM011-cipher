@@ -35,7 +35,7 @@ btnEncriptar.addEventListener('click', () => {
         let code2 = cadena[i];
         console.log(code2);
 
-        if(posicion >= 0){
+        if(posicion > 0){
             //ANALIZANDO LAS LETRAS MAYUSCULAS A = 65 y Z = 90
             if(code >= 65 && code <= 90){
             //INGRESAR EL NRO DE ESPACIOS Y CONVERTIRLO DE LENGUAJE ASCCI A LETRA.
@@ -50,7 +50,7 @@ btnEncriptar.addEventListener('click', () => {
                 break;                
             }
         }else{
-            alert("INGRESA UN NRO POSITIVO !!")
+            alert("INGRESA UN NRO POSITIVO MAYOR A CERO !!");
             break;
         }
         
@@ -97,7 +97,7 @@ btnDesencriptar.addEventListener('click', () =>{
             break;
         }
     }else{
-        alert("INGRESA UN NRO POSITIVO !!");
+        alert("INGRESA UN NRO POSITIVO MAYOR A CERO!!");
         break;
     }
       //IMPRIMIR EN UNA VARIABLE.

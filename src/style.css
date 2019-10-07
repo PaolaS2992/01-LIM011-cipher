@@ -37,19 +37,45 @@ button{
     height: 100%; /*Alto*/
     /*Con estos atributos centro la pagina*/
     margin:auto; /*Derecha e izquierda centra*/
-    margin-top: 130px; /*Alto del contenedor*/
+    margin-top: 10px; /*Alto del contenedor*/
+    /*margin-bottom: 10px; NO PUEDO ESTABLECER EN FORMA FIJA MI DIV*/ 
     border-radius: 25px; /*Bordes en las esquinas*/
     background: #E5E5E5; /*Color de fondo*/
     text-align: center; /*Aliniacion de alementos*/
 
 }
 
+/*Para el boton siguiente y finalizar*/
 .sgte{
     width: 100px; /*Ancho*/
     height: 25px; /*Alto*/
     font-size: 13px; /*Tamaño de letra*/
     color:red; /*Color de letra*/
-    font-weight: bold;
+    font-weight: bold;/*Negrita*/
 }
 
+/*Para el titulo*/
+h1{
+    width: 70%; /*Ancho*/
+    height: 100%; /*Alto*/
+    margin: auto;/*Derecha e izquierda lo centra*/
+    margin-top: 5px; /*Alto del contenedor*/
+    font-size: 40px; /*Tamaño de la letra*/
+    font-weight: bold;/*Negrita*/
+    color: #db0da7; /*Color de letra*/
+    /*background: red;*/
+    text-align: center; /*Alineacion de alementos*/
+}
 
+/*Para el pie de pagina*/
+.pie{
+    width: 70%; /*Ancho*/
+    height: 100%; /*Alto*/
+    margin: auto;/*Derecha e izquierda lo centra*/
+    margin-top: 5px; /*Alto del contenedor*/
+    font-size: 15px; /*Tamaño de la letra*/
+    font-weight: bold;/*Negrita*/
+    color: #db0da7; /*Color de letra*/
+    /*background: red;*/
+    text-align: center; /*Alineacion de alementos*/
+}
