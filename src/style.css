@@ -2,80 +2,121 @@
     display: none;
 }
 
-body{
-    font-family: arial; /*Tipo de texto*/
-    font-size: 25px; /*Tamaño de letra*/
-    background: #F5C108; /*Color de fondo*/
+body {
+    background-color:rgba(255, 255, 0, 0.7);
+    font-family: 'Heebo', sans-serif;
+    color: #293462;
 }
 
-h2{
-    font-weight: bold; /*Texto en Negrita*/
-    font-size: 30px; /*Tamaño de letra*/
-    color: #F5C108; /*Color de letra*/
+main, header, footer{
+    /*background:blue;*/
+    /*Tamaño*/
+    width: 90%;
+    /*Centrar*/
+    margin:25px auto;
 }
 
-div{
-    line-height: 50px; /*Interlineado*/
-}
-
-input{
-    width: 500px; /*Ancho*/
-    height: 25px; /*Alto*/
-    font-size: 18px; /*Tamaño de letra*/
-    color: blue; /*Color de letra*/
-}
-
-button{
-    width: 250px; /*Ancho*/
-    height: 35px; /*Alto*/
-    font-size: 18px; /*Tamaño de letra*/
-    color: blue; /*Color de letra*/
-}
-
-.general{
-    width: 70%; /*Ancho*/
-    height: 100%; /*Alto*/
-    /*Con estos atributos centro la pagina*/
-    margin:auto; /*Derecha e izquierda centra*/
-    margin-top: 10px; /*Alto del contenedor*/
-    /*margin-bottom: 10px; NO PUEDO ESTABLECER EN FORMA FIJA MI DIV*/ 
-    border-radius: 25px; /*Bordes en las esquinas*/
-    background: #E5E5E5; /*Color de fondo*/
-    text-align: center; /*Aliniacion de alementos*/
-
-}
-
-/*Para el boton siguiente y finalizar*/
-.sgte{
-    width: 100px; /*Ancho*/
-    height: 25px; /*Alto*/
-    font-size: 13px; /*Tamaño de letra*/
-    color:red; /*Color de letra*/
-    font-weight: bold;/*Negrita*/
-}
-
-/*Para el titulo*/
 h1{
-    width: 70%; /*Ancho*/
-    height: 100%; /*Alto*/
-    margin: auto;/*Derecha e izquierda lo centra*/
-    margin-top: 5px; /*Alto del contenedor*/
-    font-size: 40px; /*Tamaño de la letra*/
-    font-weight: bold;/*Negrita*/
-    color: #db0da7; /*Color de letra*/
-    /*background: red;*/
-    text-align: center; /*Alineacion de alementos*/
+    font-size: 35px;
+    text-align: center;
 }
 
-/*Para el pie de pagina*/
+h3{
+    font-size: 20px;    
+}
+
+.caja-central{
+    /*Tamaño*/
+    background:#FFFFFF;
+    width: 30%; /*CUANDO COLOCAS EN %, quiere decir tomará de cualquier tamaño de la pantalla su 30 %*/
+    height: 500px; /*CUANDO COLOCAS EN PX, es estatico, no es responsive*/
+    margin: auto; /*Centrar la caja*/
+    
+    /*Borde*/
+    border-style: solid;
+    border-color: #B8AFAF;
+    border-width: 3px;
+    /*Espacio entre lineas*/
+    line-height: 45px;
+    /*Centrado*/
+    text-align: center;
+    /*Fuente*/
+    color: #216583;
+}
+.intro-fin{
+    height: 370px;
+}
+.cabecera{
+    /*Tamaño*/
+    background: #293462;
+    width: 100%;
+    height: 50px;
+    /*Para H2: Fuente*/  
+    font-size: 20px;
+    color: #F7BE16;
+}
+.button-central{
+    /*Tamaño*/
+    background: #216583;
+    width:200px;
+    height: 30px; 
+    /*Fuente*/
+    color: #F7BE16;
+    font-family: 'Heebo', sans-serif;
+    font-size: 15px;
+    /*Borde*/   
+    border: none;
+    /*Para que salga la manito*/
+    cursor: pointer;  
+}
+.agrupacion{
+    /*Tamaño*/
+    width: 90%;
+    margin: auto;
+    /*Borde*/
+    border-style: solid;
+    border-color:#C12727;
+    border-width: 2px;
+    border-radius: 15px;
+}
+input{
+    /*Tamaño*/
+    width: 90%;
+    height: 30px;
+    /*borde*/  
+    border: 1px solid #B8AFAF;
+    border-radius: 4px; 
+    /*Fuente*/
+    font-family: 'Heebo', sans-serif;
+    font-size: 16px;
+}
+.resultado{
+    color: #C12727;
+}
+.button-cambio{
+    /*Tamaño*/
+    background: #293462;
+    width:100px;
+    height: 20px; 
+    /*Fuente*/
+    color: #F7BE16;
+    font-family: 'Heebo', sans-serif;
+    font-size: 13px;
+    /*Borde*/   
+    border: none;
+    /*Para que salga la manito*/
+    cursor: pointer;  
+}
+a{
+    color:#C12727;
+    font-weight: bold;
+    text-decoration: none;    
+}
+.mensaje{
+    font-size: 35px;
+    margin: 45px 15px;
+}
 .pie{
-    width: 70%; /*Ancho*/
-    height: 100%; /*Alto*/
-    margin: auto;/*Derecha e izquierda lo centra*/
-    margin-top: 5px; /*Alto del contenedor*/
-    font-size: 15px; /*Tamaño de la letra*/
-    font-weight: bold;/*Negrita*/
-    color: #db0da7; /*Color de letra*/
-    /*background: red;*/
-    text-align: center; /*Alineacion de alementos*/
+    font-size: 15px;
+    text-align: center;
 }

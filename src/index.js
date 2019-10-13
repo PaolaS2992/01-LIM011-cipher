@@ -1,67 +1,76 @@
-// CAPTURAR LOS ELEMENTOS DE HTML PARA LAS FUNCIONES
+const btnDirigirEncriptar = document.getElementById('btn-dirigir-encriptar');
+const inicio = document.getElementById('inicio');
+const vistaEncriptado = document.getElementById('vista-encriptado');
 
-// ELEMENTOS PARA ENCRIPTAR.
-let txtNroEncriptar = document.getElementById('txtNroEncriptar');
-let txtEncriptar = document.getElementById('txtEncriptar');
-let btnEncriptar = document.getElementById('btnEncriptar');
-
-// ELEMENTOS PARA DESENCRIPTAR.
-let txtNroDesencriptar = document.getElementById('txtNroDesencriptar');
-let txtDesencriptar = document.getElementById('txtDesencriptar');
-let btnDesencriptar = document.getElementById('btnDesencriptar');
-
-// ELEMENTO PARA MOSTRAR RESPUESTA.
-let txtRespuesta1 = document.getElementById('txtRespuesta1');
-let txtRespuesta2 = document.getElementById('txtRespuesta2');
-
-// BOTON EVENTO CLICK "CIFRA".
-btnEncriptar.addEventListener("click", () => {
-    txtRespuesta1.innerHTML = window.cipher.encode(parseInt(txtNroEncriptar.value),txtEncriptar.value);
+btnDirigirEncriptar.addEventListener('click', () => {
+  inicio.classList.add('hide');
+  vistaEncriptado.classList.remove('hide');
 });
 
-// BOTONN EVENTO CLICK "DESCIFRA".
-btnDesencriptar.addEventListener("click", () => {
-    txtRespuesta2.innerHTML = window.cipher.decode(parseInt(txtNroDesencriptar.value),txtDesencriptar.value);
+const btnDirigirDesencriptar = document.getElementById('btn-dirigir-desencriptar');
+const vistaDesencriptado = document.getElementById('vista-desencriptado');
+
+btnDirigirDesencriptar.addEventListener('click', () => {
+  inicio.classList.add('hide');
+  vistaDesencriptado.classList.remove('hide');
 });
 
-// CAPTURAMOS LOS ID DEL DIV PARA MOSTRAR Y OCULTAR.
+const txtEncriptar = document.getElementById('input-palabra-encriptar');
+const txtNroEncriptar = document.getElementById('input-offset-encriptar');
+const txtRespuesta1 = document.getElementById('txt-resultado1');
+const btnEncriptar = document.getElementById('btn-encriptar');
 
-const btnSgte = document.getElementById("btnSgte");
-const inicio = document.getElementById("inicio");
-const primeraVista = document.getElementById("primeraVista");
-
-// BOTON SIGUIENTE.
-
-btnSgte.addEventListener("click",() => {
-
-    cadena = txtEncriptar.value;
-    posicion = txtNroEncriptar.value;
-   //respuesta = txtRespuesta1.value; NO FUNCIONA :( 
-
-    if(cadena.length > 0 && posicion.length > 0){
-        inicio.classList.add("hide");
-        primeraVista.classList.remove("hide");
-    }else{
-        alert("INGRESAR TODOS LOS DATOS");
-    }
+btnEncriptar.addEventListener('click', () => {
+  const cadena = txtEncriptar.value;
+  const posicion = txtNroEncriptar.value;
+  if (cadena.length > 0 && posicion.length > 0 && parseInt(posicion, 10) > 0) {
+    txtRespuesta1.innerHTML = window.cipher.encode(parseInt(txtNroEncriptar.value, 10),
+      txtEncriptar.value);
+  } else {
+    txtRespuesta1.innerHTML = 'Ingresar los datos y offset positivo';
+  }
 });
 
-const btnFin = document.getElementById("btnFin");
-const segundaVista = document.getElementById("segundaVista");
+const btnSgteEncriptar = document.getElementById('btn-siguiente-encriptar');
+const mensajeEncriptado = document.getElementById('vista-mensaje-encriptado');
 
-// BOTON FINALIZAR.
-btnFin.addEventListener("click",() => {
-
-    cadena = txtDesencriptar.value;
-    posicion = txtNroDesencriptar.value;
-
-    if(cadena.length > 0 && posicion.length > 0){
-        primeraVista.classList.add("hide");
-        segundaVista.classList.remove("hide");
-    }else{
-        alert("INGRESAR TODOS LOS DATOS");
-    }
-    
+btnSgteEncriptar.addEventListener('click', () => {
+  const cadena = txtEncriptar.value;
+  const posicion = txtNroEncriptar.value;
+  if (cadena.length > 0 && posicion.length > 0) {
+    vistaEncriptado.classList.add('hide');
+    mensajeEncriptado.classList.remove('hide');
+  } else {
+    txtRespuesta1.innerHTML = 'TE FALTA ENCRIPTAR';
+  }
 });
 
+const txtDesencriptar = document.getElementById('input-palabra-desencriptar');
+const txtNroDesencriptar = document.getElementById('input-offset-desencriptar');
+const txtRespuesta2 = document.getElementById('txt-resultado2');
+const btnDesencriptar = document.getElementById('btn-desencriptar');
 
+btnDesencriptar.addEventListener('click', () => {
+  const cadena = txtDesencriptar.value;
+  const posicion = txtNroDesencriptar.value;
+  if (cadena.length > 0 && posicion.length > 0 && parseInt(posicion, 10) > 0) {
+    txtRespuesta2.innerHTML = window.cipher.decode(parseInt(txtNroDesencriptar.value, 10),
+      txtDesencriptar.value);
+  } else {
+    txtRespuesta2.innerHTML = 'Ingresar los datos y offset positivo';
+  }
+});
+
+const btnSgtDescencriptar = document.getElementById('btn-siguiente-desencriptar');
+const mensajeDesencriptado = document.getElementById('vista-mensaje-desencriptado');
+
+btnSgtDescencriptar.addEventListener('click', () => {
+  const cadena = txtDesencriptar.value;
+  const posicion = txtNroDesencriptar.value;
+  if (cadena.length > 0 && posicion.length > 0) {
+    vistaDesencriptado.classList.add('hide');
+    mensajeDesencriptado.classList.remove('hide');
+  } else {
+    txtRespuesta2.innerHTML = 'TE FALTA DESENCRIPTAR';
+  }
+});

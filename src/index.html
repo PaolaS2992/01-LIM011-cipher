@@ -6,82 +6,85 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Heebo&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>* * * VALIDANDO TU IDENTIDAD * * *</h1>
+        <h1>LuzEsperanza@outlook.com</h1>
     </header>
     <main>
-        <div class="general">
-            
-            <div id="inicio">
-                <h2>GENERA TU PALABRA DE SEGURIDAD</h2>
-                    
-                <figure>
-                    <img src="img/img_01.png" alt="ENCRIPTACION" height="150px" width="230px">
-                </figure>                        
-                
-                <div>
-                    <p>Ingresa tu palabra clave</p>
-                    <input type="text" id="txtEncriptar" required>
-                </div>
-                <div>
-                    <p>Ingresa el nro de Posiciones</p>
-                    <input type="text" id="txtNroEncriptar" required>
-                </div>
-                <div>
-                    <button id="btnEncriptar">GENERAR CÓDIGO</button>
-                    <p id="txtRespuesta1"></p>
-                    <button class="sgte" id="btnSgte">SIGUIENTE</button>
-                    
-                </div>                
-            </div>
-        
-            <div class="hide" id="primeraVista">
+        <div class="caja-central intro-fin" id="inicio">
+            <div class="cabecera">
                 <h2>RECUPERACIÓN DE CONTRASEÑA</h2>
-
-                <figure>
-                    <img src="img/img_02.png" alt="" height="150px" width="200px">
-                </figure>
-
-                <div>
-                <p>Ingresa tu palabra clave</p>
-                <input type="text" id="txtDesencriptar" required>
-                </div>
-                <div>
-                <p>Ingresa el nro de Posiciones</p>
-                <input type="text" id="txtNroDesencriptar" required>
-                </div>
-                <div>
-                <button id="btnDesencriptar">VALIDAR PALABRA CLAVE</button>
-                <p id="txtRespuesta2"></p>
-                <button class="sgte" id="btnFin">FINALIZAR</button>
-                </div>
             </div>
+            <h3>Ya casi terminamos ...</h3>
+            <figure>
+                <img src="./img/image_01.jpg" alt="image_01" width="50%" height="50%">
+            </figure>
+            <button class="button-central" id="btn-dirigir-encriptar">GENERAR MI CÓDIGO</button>
+            <button class="button-central" id="btn-dirigir-desencriptar">TENGO MI CÓDIGO</button>        
+        </div>
     
-            <div class="hide" id="segundaVista">
-                <h2>FELICIDADES YA PUEDES RESTABLECER TU CONTRASEÑA</h2>
-                <figure>
-                    <img src="img/img_03.png" alt="" height="200 px" width="200 px">
-                </figure>
-                <a href="index.html">VOLVER</a>
-                <!--
-                <p>Ingresa tu nueva clave</p>
-                <input type="text" id="txtNuevaClave">
-                <button id="btnCorreo">IR AL CORREO</button> -->
-
+        <div class="hide caja-central" id="vista-encriptado">
+            <div class="cabecera">
+                <h2>RECUPERACIÓN DE CONTRASEÑA</h2>
             </div>
-            
-        </div>     
-
+            <h3>Generando mi código</h3>
+            <figure>
+                <img src="./img/image_02.jpg" alt="image_02" width="45%" height="45%">
+            </figure>
+                <div class="agrupacion">
+                <label for="">Ingresar Palabra:</label>
+                <input type="text" id="input-palabra-encriptar">
+                <label for="">Ingresar Offset:</label>
+                <input type="text" id="input-offset-encriptar">
+                <button class="button-central" id="btn-encriptar">ENCRIPTAR</button>
+                <p class="resultado" id="txt-resultado1" >Resultado</p>
+                </div>
+            <button class="button-cambio" id="btn-siguiente-encriptar">SIGUIENTE</button>        
+        </div>    
+        <div class="hide caja-central" id="vista-desencriptado">
+            <div class="cabecera">
+                <h2>RECUPERACIÓN DE CONTRASEÑA</h2>
+            </div>
+            <h3>Validando mi código</h3>
+            <figure>
+                <img src="./img/image_02.jpg" alt="image_02" width="45%" height="45%">
+            </figure>
+                <div class="agrupacion">
+                <label for="">Ingresar Palabra:</label>
+                <input type="text" id="input-palabra-desencriptar">
+                <label for="">Ingresar Offset:</label>
+                <input type="text" id="input-offset-desencriptar">
+                <button class="button-central" id="btn-desencriptar">DESENCRIPTAR</button>
+                <p class="resultado" id="txt-resultado2">Resultado</p>
+                </div>
+            <button class="button-cambio" id="btn-siguiente-desencriptar">SIGUIENTE</button>            
+        </div>    
+        <div class="hide caja-central intro-fin" id="vista-mensaje-encriptado">
+            <div class="cabecera">
+                <h2>RECUPERACIÓN DE CONTRASEÑA</h2>
+            </div>
+            <p class="mensaje">
+            “ En breve llegará a tu correo la nueva palabra clave ”
+            </p>
+            <a href="index.html">VOLVER</a>
+        </div>    
+        <div class="hide caja-central intro-fin" id="vista-mensaje-desencriptado">
+            <div class="cabecera">
+                <h2>RECUPERACIÓN DE CONTRASEÑA</h2>
+            </div>
+            <p class="mensaje">
+            “ FELICIDADES ya puedes recuperar tu contraseña ”
+            </p>
+            <a href="index.html">VOLVER</a>
+        </div>
     </main>
-
     <footer>
-       <p class="pie">Laboratoria 2019 | LIM011-cipher</p>
+        <p class="pie">LIM011 - CIFRADO CESAR - 2019</p>
     </footer>
+    <script src="cipher.js"></script>
+    <script src="index.js"></script>
 </body>
-<script src="cipher.js"></script>
-<script src="index.js"></script>
-
 </html>
