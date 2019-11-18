@@ -1,4 +1,4 @@
-// Minidata
+// FUNCION MINIDATA.
 export const traerDataMap2 = (arr) => arr.map((ele) => {
   const obj = {
     identificador: ele.id,
@@ -13,41 +13,40 @@ export const traerDataMap2 = (arr) => arr.map((ele) => {
     debilidades: ele.weaknesses,
     huevo: ele.egg,
     frecuencia: ele.avg_spawns,
+    Previo: ele.prev_evolution,
+    Siguiente: ele.next_evolution,    
   };
   return obj;
 });
-// Filtro Huevos
+// FUNCION HUEVITOS.
 export const filtroHuevo = (array, distancia) => {
   const nuevoArray = array.filter((objeto) => objeto.huevo === distancia);
   return nuevoArray;
 };
-// Filtro debilidades y tipo
+// FUNCION PARA DEBILIDADES Y TIPO.
 export const filtroDebilidadTipo = (array, propiedad, valor) => {
-  const newArray = [];
+  const newArray = []
   array.forEach((objeto) => {
     objeto[propiedad].forEach((string) => {
-      if (string === valor) {
+      if(string === valor) { 
         newArray.push(objeto);
       }
     });
   });
   return newArray;
 };
-
-// filtro buscador por nombre
-export const buscarPorNombre = (array, str) => {
-  const nuevoArraysss = array.filter((objeto) => objeto.nombre.toLowerCase().startsWith(str));
+// FUNCION PARA BUSCAR NOMBRES.
+export const buscarPorNombre = (array, nombre) => {
+  const nuevoArraysss = array.filter((objeto) => objeto.nombre.toLowerCase().startsWith(nombre));
   return nuevoArraysss;
 };
-
-// Filtro orden alfabetico, orden asc - desc y top
-// eslint-disable-next-line arrow-body-style
+// FUNCION PARA ORDENAR POR NOMBRE, NUMERO Y TOP 10
 export const ordenAlfNum = (arr, propiedad) => {
-  return arr.sort((a, b) => (a[propiedad] < b[propiedad] ? -1 : 1));
+  return arr.sort((a, b) => {
+    if (a[propiedad] < b[propiedad]){return -1;}
+  });
 };
-
-// SELECCIONANDO STRING.
-// eslint-disable-next-line consistent-return
+// SELECCIONANDO STRING.(PARTE DE LA FUNCIÓ ORDENAR).
 export const AsDes = (data, string) => {
   switch (string) {
     case 'A-Z':
@@ -59,7 +58,27 @@ export const AsDes = (data, string) => {
     case 'DESC':
       return ordenAlfNum(data, 'numero').reverse();
     case 'MAYORF':
-      return ordenAlfNum(data, 'frecuencia').slice(0, 10);
-    // no default
+      return ordenAlfNum(data, 'frecuencia').slice(0,10);
+    default:
+      break;
   }
-};
+}
+// FUNCION PARA EVOLUCIONES.
+export const evolutions = (arr, propiedad, num) => {
+  let newArray = [];
+  arr.forEach((objeto) => {
+    if(objeto.identificador === num){
+      if(objeto[propiedad] === undefined){
+        newArray = [];
+      }else{
+        objeto[propiedad].forEach((obj) => {
+          obj.label = propiedad;
+          /* obj.imagen = `http://www.serebii.net/pokemongo/pokemon/${obj.num}.png`; */
+          /* console.log(obj); */
+          newArray.push(obj);
+        });
+      }
+    }
+  });
+  return newArray;
+}
