@@ -2,50 +2,46 @@ import POKEMON from './data/pokemon/pokemon.js';
 import {
   traerDataMap2, filtroHuevo, filtroDebilidadTipo, buscarPorNombre, AsDes, evolutions,
 } from './data.js';
-
 // MINIDATA.
 const dataPokemon = traerDataMap2(POKEMON);
-console.log(dataPokemon);
 // CREACION DE LA PORCION DE STRING TEMPLATE DE EVOLUCIONES.
-// Creamos es String y la concateno (Me devuelve etiquetas).
 const stringEvolution = (arr) => {
   let newString = '';
   arr.forEach((obj) => {
-      newString += `
-<ul class = "columna-evo">
-  <li>
-          <p>${obj.label}</p>
-  </li>
-  <li>
-          <figure>
-                  <img src="http://www.serebii.net/pokemongo/pokemon/${obj.num}.png" alt="">
-          </figure>
-  </li>
-  <li>
-          <h3>${obj.name}</h3>
-  </li>
-  <li>
-          <h4>${obj.num}</h4>
-  </li>
-</ul>
-  `;
+    newString += `
+    <ul class = "columna-evo">
+      <li>
+        <p>${obj.label}</p>
+      </li>
+      <li>
+        <figure>
+          <img src="http://www.serebii.net/pokemongo/pokemon/${obj.num}.png" alt="" id="${obj.num}">
+        </figure>
+      </li>
+      <li>
+        <h3>${obj.name}</h3>
+      </li>
+      <li>
+        <h4>${obj.num}</h4>
+      </li>
+    </ul>
+    `;
   });
   return newString;
-}
-//console.log(stringEvolucion(dataPokemon));
-
+};
 // CREACIÓN ELEMENTO DIV CON STRING TEMPLATE.
 const card = (obj) => {
   const divElement = document.createElement('div');
-  divElement.classList.add("tarjeta-pokemon");
-  divElement.innerHTML = `<img src="${obj.imagen}" class="imagen-pokemon">
-  <p class="nombre-pokemon"  >${obj.nombre}  </p>
-  <p class="numero-pokemon" >${obj.numero} </p>  
-  </div>`;
-    // MODAL AL HACER CLICK.
-  divElement.addEventListener('click', () => {    
-    const divElementModal = document.createElement('div'); 
-    divElementModal.classList.add("modal"); // Agrego el atributo class="modal"
+  divElement.classList.add('tarjeta-pokemon');
+  divElement.innerHTML = `
+  <img src="${obj.imagen}" class="imagen-pokemon">
+  <p class="nombre-pokemon">${obj.nombre} </p>
+  <p class="numero-pokemon">${obj.numero} </p>
+  `;
+  // INICIO DEL MODAL.
+  divElement.addEventListener('click', () => {
+    const divElementModal = document.createElement('div');
+    divElementModal.classList.add('modal');
     divElementModal.innerHTML = `
     <div class="flex">
       <div class="contenido-modal">
@@ -106,17 +102,18 @@ const card = (obj) => {
           </div>
         </div>
       </div>
-    </div>`;   
-    document.body.appendChild(divElementModal); // Agrego el div en todo el BODY.
-    divElementModal.classList.add('modal-open');  
-    const cerrar = document.getElementById('cerrar'); 
-    // Cerrar modal.
+    </div>`;
+    document.body.appendChild(divElementModal);
+    divElementModal.classList.add('modal-open');
+    const cerrar = document.getElementById('cerrar');
+    // CERRAR MODAL
     cerrar.addEventListener('click', () => {
-     document.body.removeChild(divElementModal); 
-    });     
-  })
+      document.body.removeChild(divElementModal);
+    });
+  });
+  // FIN MODAL.
   return divElement;
-}
+};
 // RECORRER Y AGREGAR LOS NODOS.
 const seccionCardsPokemones = document.querySelector('#insertar-pokemones');
 const templateCard = (arr) => {
@@ -125,6 +122,7 @@ const templateCard = (arr) => {
     seccionCardsPokemones.appendChild(card(obj));
   });
 };
+
 // PINTAR POKEMONES PANTALLA PRINCIPAL.
 templateCard(dataPokemon);
 // FILTRO POR HUEVO.
@@ -135,35 +133,31 @@ document.querySelector('#filtro-distancia').addEventListener('change', () => {
 // FILTRO POR DEBILIDADES.
 document.querySelector('#filtro-debilidades').addEventListener('change', () => {
   const seleccionarDebilidad = document.querySelector('#filtro-debilidades').value;
-  templateCard(filtroDebilidadTipo(dataPokemon, 'debilidades' ,seleccionarDebilidad));
+  templateCard(filtroDebilidadTipo(dataPokemon, 'debilidades', seleccionarDebilidad));
 });
 // FILTRO POR TIPO
 document.querySelector('#guia-tipos').addEventListener('click', (event) => {
   const seleccionarTipo = event.target.alt;
-  templateCard(filtroDebilidadTipo(dataPokemon, 'tipo' , seleccionarTipo));
+  templateCard(filtroDebilidadTipo(dataPokemon, 'tipo', seleccionarTipo));
 });
 // FILTRO POR ORDEN ALFABETICO Y NUMERICO.
-document.querySelector('#ordenAlfNum').addEventListener('change', ()=>{
+document.querySelector('#ordenAlfNum').addEventListener('change', () => {
   const seleccionOpcion = document.querySelector('#ordenAlfNum').value;
   templateCard(AsDes(dataPokemon, seleccionOpcion));
 });
 // TOP 10 DE FRECUENCIA DE APARICIÓN.
 const btnTop10 = document.querySelector('#mayor-frecuencia');
-btnTop10.addEventListener('click',() => {
+btnTop10.addEventListener('click', () => {
   templateCard(AsDes(dataPokemon, btnTop10.value));
 });
-// FILTRO BUSCADOR
+//  FILTRO BUSCADOR
 document.querySelector('#nombre-pokemon').addEventListener('input', (event) => {
   const pokemonBuscado = event.target.value.toLowerCase();
   templateCard(buscarPorNombre(dataPokemon, pokemonBuscado));
 });
-// MENU TOGLEE
+// MENU
 const toglee = document.querySelector('.toglee');
 toglee.addEventListener('click', () => {
   document.getElementById('siderbar').classList.toggle('active');
   document.querySelector('#filtros').reset();
 });
-
-// FILTRO EVOLUTIONS.
-console.log(evolutions(dataPokemon, 'Siguiente', 2))
-console.log(evolutions(dataPokemon, 'Previo', 2))
