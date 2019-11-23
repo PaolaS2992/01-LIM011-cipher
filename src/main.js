@@ -1,7 +1,7 @@
-import POKEMON from '../data/pokemon/pokemon.js';
+import POKEMON from './data/pokemon/pokemon.js';
 import {
   traerDataMap2, filtroHuevo, filtroDebilidadTipo, buscarPorNombre, AsDes, evolutions, filtroEvo,
-} from '../data.js';
+} from './data.js';
 
 // MINIDATA.
 const dataPokemon = traerDataMap2(POKEMON);
