@@ -22,9 +22,7 @@ footer{
 ul{
     list-style:none; 
 }
-a.facebook,
-a.instagram,
-a.twitter{
+.redes-sociales{
     margin-left: 10px;
 }
 .logo-cabecera-pokemon{
@@ -117,6 +115,10 @@ a.twitter{
     width: 45px;
     margin-left: 15px;
 }
+#mayor-frecuencia{
+    background: none;
+    border: none; 
+}
 .guia-tipos{
     display: flex;
     flex-wrap: wrap;
@@ -161,6 +163,7 @@ a.twitter{
     border-radius:30px;
     animation-name: modal;
     animation-duration: 1s;
+   /*margin-top: 150px;*/ 
 }
 @keyframes modal{
     from{top:-400px; opacity: 0;}
@@ -170,6 +173,7 @@ a.twitter{
     color: rgb(250, 241, 241);
     font-size: 60px;
     font-weight: bolder;
+    /* margin-left: 8px; */
     margin: 8px;
     text-align: center;
     cursor: pointer;    
@@ -177,6 +181,9 @@ a.twitter{
 .modal-open{
     display: block;
 }
+/*FIN MODAL*/
+
+/*INICIO CUERPO MODAL*/
 .modal-body{
     display: flex;
     flex-direction: column;
@@ -184,20 +191,22 @@ a.twitter{
 .modal-header{
     text-align: center;
     padding: 5px;
-    color: red;
+    color: rgb(44, 42, 42);
+    font-weight: bold;
+    font-size: 18px;
 }
 .modal-header img{
     width: 150px;
     height: 150px;
 }
-.modal-main{
+.modal-main{ /*Para hacer las dos columnas*/
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 .columna{
     padding: 5px;
-    text-align: center;  
+    text-align: center; /*Centra los textos*/    
 }
 .atributo-titulo{
     width: 120px;
@@ -213,37 +222,73 @@ a.twitter{
     font-weight: bold;
     line-height: 30px;
 }
-/* Inicio Evoluciones*/
 .modal-footer{
     text-align: center;
-    display: flex;
+    display: flex; /*Para Prev y Sgte*/
     flex-wrap: wrap;
     justify-content: center;    
 }
 .evolucion{
-    display: flex;
+    display: flex; /*Para Solo Prev o Solo Sgte*/
     flex-wrap: wrap;
     justify-content: center;
 }
-.columna-evo{
-    padding: 10px;
-}
-.evolucion figure{
-    width: 120px;
-    height: 120px;
-    border-radius: 100%;
-    border: white 5px solid;
-    background-color:#79C9F9;
-    margin: auto;
-    cursor: pointer;
-}
-/*Fin Evoluciones*/
-/*FIN MODAL*/
+/*FIN CUERPO MODAL*/
 
-#mayor-frecuencia{
-    background: none;
-    border: none; 
+/*INICIO INFORMACION EVOLUCION*/
+div.card-evolucion{/* CONTENEDOR */
+    margin: 10px;
+    width: 180px;
+    height: 200px;
+    background-color: #79C9F9;
+    overflow: hidden;/*Para que no haya Scroll*/
 }
+div.lado-front{/* DIV 1 */
+    width: 180px;
+    height: 200px;
+    background-image: url(./imagenes/Opcion1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color:rgba(236, 225, 225, 0.3);
+    text-align: center;
+    overflow: hidden;
+    -webkit-transition: height .4s;
+}
+.lado-front p{
+    color: crimson;
+    font-size: 13px;
+    margin-top: 8px;
+    line-height: 17px;
+}
+img.imagen{
+    display: block;
+    margin: 25px auto;
+    width: 100px;
+    height: 100px;
+    -webkit-transition: margin-top .4s;
+}
+div.lado-back{/* DIV 2 */
+    width: 180px;
+    height: 0px;
+    background-color: crimson;
+    font-size: 13px;
+    text-align: center;
+    line-height: 17px;    
+    color: white;
+    overflow: hidden;
+    -webkit-transition: height .4s;
+}
+div.card-evolucion:hover div.lado-front{
+    height: 148px;
+}
+div.card-evolucion:hover div.lado-back{
+    height: 52px;
+}
+div.card-evolucion:hover img.imagen{
+    margin-top: 10px;
+}
+/*FIN INFORMACION EVOLUCION*/
+
 /*MEDIA QUERYS*/
 @media(max-width: 768px){/*cuando es menor 768px*/
     .logo-cabecera-pokemon{
@@ -251,8 +296,7 @@ a.twitter{
         height: 100px;        
     }
 }
-/*Para Modal en Movil*/
-@media(max-width: 420px){/*cuando es menor 420px*/
+@media(max-width: 820px){/*cuando es menor 420px*/
     .contenido-modal{
         width: 70%;
     }
@@ -279,19 +323,36 @@ a.twitter{
         font-size: 10px;
         line-height: 10px;
     }
-    /*INICIO QUERY FOOTER - EVOLUCIONES*/
-    .evolucion figure{
-        width: 80px;
-        height: 80px;
-        border: white 2px solid;
+    /*INICIO QUERY FOOTER*/
+    div.card-evolucion{/* CONTENEDOR */
+        margin: 5px;
+        width: 110px;
+        height: 150px;
+    }
+    div.lado-front{/* DIV 1 */
+        width: 110px;
+        height: 150px;
+    }
+    .lado-front p{
+        font-size: 10px;
+        margin-top: 8px;
+        line-height: 13px;
+    }
+    .lado-front h5{
         font-size: 10px;
     }
-    .evolucion figure img{
+    img.imagen{
+        margin: 15px auto;
         width: 70px;
         height: 70px;
     }
-    .columna-evo{
-        font-size: 11px;
-    }   
+    div.lado-back{/* DIV 2 */
+        font-size: 10px;        
+        line-height: 11px;
+        width: 110px;
+        height: 0px;       
+    }
+    div.card-evolucion:hover div.lado-front{
+        height: 115px;
+    }    
 }
-
