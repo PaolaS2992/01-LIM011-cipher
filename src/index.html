@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8">
-    <title>PokeDataPRUEBADOS</title>
+    <title>PokeData</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
@@ -18,7 +18,7 @@
     </header>
     <!--search-->
         <form class="fomulario-nombre">
-                <input type="text" id="nombre-pokemon" value="" placeholder="Busca un pokemon"/>
+                <input type="text" id="nombre-pokemon" value="" placeholder="Nombre del pokemon"/>
         </form>
     <div id="siderbar">
         <div class="toglee">
@@ -28,8 +28,17 @@
                 
             <form id="filtros">
                 <li> <p>Filtrar por:</p></li>
-                <!-- <li><button id="inicio">Mostrar todos</button></li> -->                
-
+                <!-- <li><button id="inicio">Mostrar todos</button></li> -->
+                <li>
+                        <fieldset id="filtro-candys">
+                                <legend>Caramelos</legend>                        
+                                <input type="radio" id="12" name="candy">12<!-- checked="checked" -->
+                                <input type="radio" id="25" name="candy">25
+                                <input type="radio" id="50" name="candy">50
+                                <input type="radio" id="100" name="candy">100
+                                <input type="radio" id="400" name="candy">400                        
+                        </fieldset>
+                </li>
                 <li>
                         <select id="filtro-distancia" class="filtro-distancia">
                                 <option disabled selected>Huevo</option> 
@@ -73,9 +82,13 @@
                     </li>
             </form>
                  <li>
-                        <button id="mayor-frecuencia" value="MAYORF"><img src="./imagenes/top10.jpg" alt="TOP 10" width="100px"></button>
+                        <fieldset id="filtro-frecuencia">
+                                <legend>TOP 10</legend>
+                                <input type="radio" name="frecuencia" id="MAYORF">Mayor Frecuencia<br>
+                                <input type="radio" name="frecuencia" id="MENORF">Menor Frecuencia
+                        </fieldset>
                 </li>
-                <li> <p>Tipos:</p></li>
+                <li><p>Tipos:</p></li>
                 <li>
                     <section id="guia-tipos" class="guia-tipos">
                         <button id="aire" class="btn-tipo"> 

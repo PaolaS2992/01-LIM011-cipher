@@ -23,7 +23,6 @@ export const filtroHuevo = (array, distancia) => {
   const nuevoArray = array.filter((objeto) => objeto.huevo === distancia);
   return nuevoArray;
 };
-
 // FUNCION PARA DEBILIDADES Y TIPO.
 export const filtroDebilidadTipo = (array, propiedad, valor) => {
   const newArray = []
@@ -58,8 +57,10 @@ export const AsDes = (data, string) => {
       return ordenAlfNum(data, 'numero');
     case 'DESC':
       return ordenAlfNum(data, 'numero').reverse();
-    case 'MAYORF':
+    case 'MENORF':
       return ordenAlfNum(data, 'frecuencia').slice(0,10);
+    case 'MAYORF':
+      return ordenAlfNum(data, 'frecuencia').reverse().slice(0,10);
     default:
       break;
   }
@@ -81,8 +82,8 @@ export const evolutions = (arr, propiedad, num) => {
   });
   return newArray;
 }
-
-export const filtroEvo = (arr, string) => {
-  const newArray = arr.filter(obj => obj.numero === string);
+// FUNCION PARA INF.EVOLUCIONES Y CARAMELOS.
+export const filterInfEvoAndCandy = (arr, propiedad, string) => {
+  const newArray = arr.filter(obj => obj[propiedad] === string);
   return newArray;
 }

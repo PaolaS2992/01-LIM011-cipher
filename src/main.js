@@ -1,52 +1,18 @@
 import POKEMON from './data/pokemon/pokemon.js';
 import {
-  traerDataMap2, filtroHuevo, filtroDebilidadTipo, buscarPorNombre, AsDes, evolutions, filtroEvo,
+  traerDataMap2, filtroHuevo, filtroDebilidadTipo, buscarPorNombre, AsDes, evolutions, filterInfEvoAndCandy,
 } from './data.js';
 
 // MINIDATA.
 const dataPokemon = traerDataMap2(POKEMON);
 
-// FUNCION PARA CREAR EL STRING TEMPLATE EVOLUCIONES.
-const strTemplateEvolution = (arr) => {
-  let newString = '';
-  arr.forEach((obj) => {
-      newString += `
-      <div class = "card-evolucion">
-          <div class="lado-front">
-              <p>${obj.label} Evolución</p>
-              <h5>${obj.num} - ${obj.name}</h5>
-              <figure>
-                  <img src="http://www.serebii.net/pokemongo/pokemon/${obj.num}.png" alt="" class="imagen">
-              </figure>
-          </div>
-          <div class="lado-back">
-              ${strTemplateInfoEvolution(filtroEvo(dataPokemon, obj.num))}
-          </div>
-      </div>
-      `;
-  });
+// FUNCION PARA CREAR EL STRING TEMPLATE POKEMONES.
+const strTemplatePokemon = (obj) => {
+  let newString = `<img src="${obj.imagen}" class="imagen-pokemon">
+  <p class="nombre-pokemon">${obj.nombre}</p>
+  <p class="numero-pokemon">${obj.numero}</p>  
+  </div>`;
   return newString;
-}
-// FUNCION PARA CREAR EL STRING TEMPLATE DE INFORMACION DE EVOLUCIONES.
-const strTemplateInfoEvolution = (arr) => {
-  let newStringInfo = '';
-  arr.forEach((obj) => {
-      newStringInfo += `        
-          <div>
-              <span>Tipo: </span>
-              <span>${obj.tipo}</span>
-          </div>
-          <div>
-              <span>Huevo: </spam>
-              <span>${obj.huevo}</span>
-          </div>
-          <div>
-              <span>Hora aparición: </span>
-              <span>${obj.horaAparicion}</span>
-          </div>
-      `;
-  });
-  return newStringInfo;
 }
 // FUNCION PARA CREAR EL STRING TEMPLATE MODAL.
 const strTemplateModal = (obj) => {
@@ -58,15 +24,12 @@ const strTemplateModal = (obj) => {
       <div class="modal-header">
         <ul>
           <li>
+            <h3>${obj.numero} - ${obj.nombre}</h3>
+          </li>
+          <li>
             <figure>
               <img src="${obj.imagen}" alt="">
             </figure>
-          </li>
-          <li>
-            <h3>${obj.nombre}</h3>
-          </li>
-          <li>
-            <h4>${obj.numero}</h4>
           </li>
         </ul>
       </div>
@@ -102,6 +65,10 @@ const strTemplateModal = (obj) => {
             <div class = "atributo-titulo">Huevitos</div>
               <span class = "atributo-valor">${obj.huevo}</span>
             </li>
+            <li>
+            <div class = "atributo-titulo">Frecuencia</div>
+              <span class = "atributo-valor">${obj.frecuencia}</span>
+            </li>
         </ul>
       </div>
       <div class="modal-footer">
@@ -113,23 +80,60 @@ const strTemplateModal = (obj) => {
 </div>`;
   return newString;
 }
+// FUNCION PARA CREAR EL STRING TEMPLATE EVOLUCIONES.
+const strTemplateEvolution = (arr) => {
+  let newString = '';
+  arr.forEach((obj) => {
+      newString += `
+      <div class = "card-evolucion">
+          <div class="lado-front">
+              <p>${obj.label} Evolución</p>
+              <h5>${obj.num} - ${obj.name}</h5>
+              <figure>
+                  <img src="http://www.serebii.net/pokemongo/pokemon/${obj.num}.png" alt="" class="imagen">
+              </figure>
+          </div>
+          <div class="lado-back">
+              ${strTemplateInfoEvolution(filterInfEvoAndCandy(dataPokemon,'numero', obj.num))}
+          </div>
+      </div>
+      `;
+  });
+  return newString;
+}
+// FUNCION PARA CREAR EL STRING TEMPLATE DE INFORMACION DE EVOLUCIONES.
+const strTemplateInfoEvolution = (arr) => {
+  let newStringInfo = '';
+  arr.forEach((obj) => {
+      newStringInfo += `        
+          <div>
+              <span>Tipo: </span>
+              <span>${obj.tipo}</span>
+          </div>
+          <div>
+              <span>Huevo: </spam>
+              <span>${obj.huevo}</span>
+          </div>
+          <div>
+              <span>Hora aparición: </span>
+              <span>${obj.horaAparicion}</span>
+          </div>
+      `;
+  });
+  return newStringInfo;
+}
 // FUNCION PARA CREAR CONTENEDOR DE TODOS LOS STRING TEMPLATE.
 const card = (obj) => {
   const divElement = document.createElement('div');
   divElement.classList.add("tarjeta-pokemon");
-  divElement.innerHTML = `<img src="${obj.imagen}" class="imagen-pokemon">
-  <p class="nombre-pokemon">${obj.nombre}</p>
-  <p class="numero-pokemon">${obj.numero}</p>  
-  </div>`;
-
+  divElement.innerHTML = strTemplatePokemon(obj);
   // MODAL AL HACER CLICK.
   divElement.addEventListener('click', () => {    
     const divElementModal = document.createElement('div'); 
     divElementModal.classList.add("modal"); // Agrego el atributo class="modal"
     divElementModal.innerHTML = strTemplateModal(obj);   
     document.body.appendChild(divElementModal); // Agrego el div en todo el BODY.
-    divElementModal.classList.add('modal-open');  
-    
+    divElementModal.classList.add('modal-open');     
     // Cerrar modal.
     const cerrar = document.getElementById('cerrar');
     cerrar.addEventListener('click', () => {
@@ -146,7 +150,6 @@ const templateCard = (arr) => {
     seccionCardsPokemones.appendChild(card(obj));
   });
 };
-
 // PINTAR POKEMONES PANTALLA PRINCIPAL.
 templateCard(dataPokemon);
 // FILTRO POR HUEVO.
@@ -159,7 +162,7 @@ document.querySelector('#filtro-debilidades').addEventListener('change', () => {
   const seleccionarDebilidad = document.querySelector('#filtro-debilidades').value;
   templateCard(filtroDebilidadTipo(dataPokemon, 'debilidades' ,seleccionarDebilidad));
 });
-// FILTRO POR TIPO
+// FILTRO POR TIPO.
 document.querySelector('#guia-tipos').addEventListener('click', (event) => {
   const seleccionarTipo = event.target.alt;
   templateCard(filtroDebilidadTipo(dataPokemon, 'tipo' , seleccionarTipo));
@@ -169,15 +172,20 @@ document.querySelector('#ordenAlfNum').addEventListener('change', ()=>{
   const seleccionOpcion = document.querySelector('#ordenAlfNum').value;
   templateCard(AsDes(dataPokemon, seleccionOpcion));
 });
-// TOP 10 DE FRECUENCIA DE APARICIÓN.
-const btnTop10 = document.querySelector('#mayor-frecuencia');
-btnTop10.addEventListener('click',() => {
-  templateCard(AsDes(dataPokemon, btnTop10.value));
+// TOP 10 DE FRECUENCIA DE APARACION.
+document.querySelector('#filtro-frecuencia').addEventListener('click', (e) => {
+  const selectFrecuencia = e.target.id;
+  templateCard(AsDes(dataPokemon, selectFrecuencia));
 });
 // FILTRO BUSCADOR
 document.querySelector('#nombre-pokemon').addEventListener('input', (event) => {
   const pokemonBuscado = event.target.value.toLowerCase();
   templateCard(buscarPorNombre(dataPokemon, pokemonBuscado));
+});
+// FILTRO CANTIDAD DE CANDYS.
+document.querySelector('#filtro-candys').addEventListener('click', (e) => {
+  const seleccionRadio = e.target.id;
+  templateCard(filterInfEvoAndCandy(dataPokemon,'caramelos', parseInt(seleccionRadio)));
 });
 // MENU TOGLEE
 const toglee = document.querySelector('.toglee');
