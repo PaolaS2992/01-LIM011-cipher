@@ -2,6 +2,7 @@
 export const traerDataMap2 = (arr) => arr.map((ele) => {
   const obj = {
     identificador: ele.id,
+    debilidades: ele.weaknesses,
     nombre: ele.name,
     imagen: ele.img,
     numero: ele.num,
@@ -9,8 +10,7 @@ export const traerDataMap2 = (arr) => arr.map((ele) => {
     altura: ele.height,
     peso: ele.weight,
     caramelos: ele.candy_count,
-    horaAparicion: ele.spawn_time,
-    debilidades: ele.weaknesses,
+    horaAparicion: ele.spawn_time,    
     huevo: ele.egg,
     frecuencia: ele.avg_spawns,
     Previo: ele.prev_evolution,
@@ -35,6 +35,45 @@ export const filtroDebilidadTipo = (array, propiedad, valor) => {
   });
   return newArray;
 };
+// FILTRO AVANZADO: SE CONSIDERA EL TIPO Y DEBILIDAD.
+export const filtroFusionado = (arr, tipo, debilidad) => {
+  const newArray = [];
+  const newArray1 = [];
+  arr.forEach((objeto) => {
+    objeto.tipo.forEach((string) => {
+      if(string === tipo){
+        newArray.push(objeto);   
+      }   
+    });  
+  });
+  newArray.forEach((objeto) => {
+    objeto.debilidades.forEach((string) => {
+      if(string === debilidad){
+        newArray1.push(objeto);
+      }
+    });
+  });
+  return newArray1;
+}
+// FUNCION PARA ORDENAR DEL MENOS Y MÁS DEBIL.
+export const filtroGeneralDebilidad = (arr, str) => {
+  let newArray = [];
+  if(str === 'MENOSDEBI'){
+    newArray = arr.sort((a, b) => {
+      if(a.debilidades.length > b.debilidades.length) return 1;
+      if(a.debilidades.length < b.debilidades.length) return -1;
+      return 0;
+    });
+  }
+  if(str === 'MASDEBI'){
+    newArray = arr.sort((a, b) => {
+      if(b.debilidades.length > a.debilidades.length) return 1;
+      if(b.debilidades.length < a.debilidades.length) return -1;
+      return 0;
+    });
+  }
+  return newArray;
+}
 // FUNCION PARA BUSCAR NOMBRES.
 export const buscarPorNombre = (array, nombre) => {
   const nuevoArraysss = array.filter((objeto) => objeto.nombre.toLowerCase().startsWith(nombre));
