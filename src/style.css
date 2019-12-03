@@ -37,7 +37,6 @@ p{
     position: absolute;
     margin-top: -50px;
     width: 260px;
-    /* height: 140%; */
     background: rgba(222, 222, 228, 0.9);
     left: -260px;
     transition: all 500ms linear;
@@ -233,7 +232,6 @@ select{
     to{top:0; opacity: 1;}
 }
 .cerrar{
-    /* color: #FFE031; */
     color: rgb(243, 242, 232);
     font-size: 60px;
     font-weight: bolder;
@@ -365,7 +363,6 @@ div.card-evolucion:hover img.imagen{
     margin: auto;
     border-radius: 20px;
     background: -webkit-linear-gradient(#7682D8, #33ADD4);
-    /* background-color: #4d80e4; */
     padding-top: 8px;
 }
 .agrupar-tipo{
@@ -385,11 +382,11 @@ div.card-evolucion:hover img.imagen{
     justify-content: center;    
 }
 .celdas-radio{
-    width: 95px;
+    width: 100px;
     height: 20px;
     margin: 2px;
     font-size: 13px;    
-    text-align: right;   
+    text-align: right;
 }
 .agrupar-debilidad{
     margin: auto;
@@ -399,15 +396,15 @@ div.card-evolucion:hover img.imagen{
     line-height: 30px;
 }
 .agrupar-botones{
-    padding: 10px;    
+    padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;    
+    justify-content: center;
 }
 .btn-avanzado{
     width: 80px;
     height: 25px;
-    margin-left: 8px;
+    margin: 5px;
     padding: 8px;
     line-height: 5px;    
     font-family:'Montserrat', sans-serif;
