@@ -184,6 +184,7 @@ select{
 .debilidad{
     width: 60px;
     height: 60px;
+    background: none;
     border: none;
     outline: none;
     font-family: 'Montserrat', sans-serif;
